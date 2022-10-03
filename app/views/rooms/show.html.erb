@@ -1,0 +1,27 @@
+
+ <meta name='turbolinks-visit-control' content='reload'>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      initMap(<%= @hotel.latitude%>, <%= @hotel.longitude%>);
+    });
+  </script>
+  
+
+<div class="container">
+
+  <div class="card mr-2 mt-3" style="width: 50rem; position: relative; left: 7rem">
+        <% if @room.image.attached? %>
+            <img class="card-img-top" src=" <%= (url_for(@room.image)) %> " alt="Card image cap">
+        <% end %>
+  <div class="card-body">
+    <h4 class="card-title"><%= @hotel.name %> </h4>
+    <h6 class="card-title"><b>Location: <%= @hotel.city %> </b></h6>
+    <h6 class="card-title"><b>Room Type: <%= @room.room_type  %></b></h6>
+    <p class="card-text"> <b>Price: <%= @room.price %>/-per night</b></p>
+    <%= link_to "Book Now", new_hotel_room_booking_path(@hotel.id, @room.id), class: "btn btn-primary" %>
+  </div>
+</div>
+</div>
+<div class="container mt-2">
+    <div id="map" style="width: 72%; height: 400px; position:relative; left:7rem"></div>
+</div>

@@ -1,0 +1,16 @@
+<div class= "container">
+<% @luxuries.each do |lux| %>
+
+  <div class="card mr-2 mt-3" style="width: 50rem; position: relative; left: 10rem">
+        <% if lux.image.attached? %>
+            <img class="card-img-top" src=" <%= (url_for(lux.image)) %> " alt="Card image cap">
+        <% end %>
+
+        <div class="card-body">
+            <h5 class="card-title"> <%= lux.hotel.name %> </h5>
+            <p class="card-text"><b>Room Type :</b><%= lux.room_type %> </p>
+            <%= link_to "Show Details", hotel_room_path(lux.hotel_id, lux.id), class: "btn btn-primary" %> 
+        </div>
+</div>
+  <% end %>
+ </div> 

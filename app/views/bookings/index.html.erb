@@ -1,0 +1,52 @@
+<% if @bookings.count != 0 %>
+<div class="container">
+<h4 style="position: relative; left: 25rem; top: 2rem; margin-bottom: 2rem"> Your All Reservations </h4>
+
+
+<table class="table table-striped" style="position: relative;  top: 2rem">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col" style="position: relative; left: 3rem">Hotel Name</th>
+      <th scope="col" >Room Type</th>
+      <th scope="col" >Adults</th>
+      <th scope="col">Children</th>
+      <th scope="col">Check In</th>
+      <th scope="col">Check Out</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+
+ <% @bookings.each do |booking| %>
+  <tr>
+    
+    <td style="width: 17rem; position: relative right: 5rem">  <% if booking.room.image.attached? %>
+                    <img class="card-img-top" src=" <%= (url_for(booking.room.image)) %> " alt="Card image cap">
+                <% end %> </td>
+    
+    <td style="position: relative; top:4rem; left: 1rem"><b><%= booking.room.hotel.name %></b></td>
+    <td style="position: relative; top:4rem"><b><%= booking.room.room_type %> </b></td>
+    <td style="position: relative; top:4rem; left: 1.5rem"><b><%= booking.adults %></b></td>
+    <td style="position: relative; top:4rem; left: 1.5rem"><b><%= booking.child %></b></td>
+    <td style="position: relative; top:4rem"><b><%= booking.start_date.to_date %></b></td>
+    <td style="position: relative; top:4rem"><b><%= booking.end_date.to_date %> </b></td>
+    <td><% if booking.is_approved == true %>
+      <span class="badge badge-success" style="position: relative; top:4rem">Approved</span>
+      <% else %>
+      <span class="badge badge-danger" style="position: relative; top:4rem"> Pending</span>
+      <% end %></td>
+
+  </tr>
+ <% end %>
+
+    </tr>
+</tbody>
+</table>
+</div>
+<% else %>
+<div class="container">
+<h3 style="position: relative; left: 20rem; top: 2rem"> You have no reservations </h3>
+</div>
+<% end %>
+

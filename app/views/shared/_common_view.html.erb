@@ -1,0 +1,32 @@
+<% @hotels.each do |hotel| %>
+
+  <div class="card mr-2 mt-4" style="width: 50rem; position: relative; left: 10rem">
+        <% if hotel.image.attached? %>
+            <img class="card-img-top" src=" <%= (url_for(hotel.image)) %> " alt="Card image cap">
+        <% end %>
+  <div class="card-body">
+    <h4 class="card-title"><%= hotel.name  %></h4>
+    <h6 class="card-title"><b>Location: <%= hotel.city %> </b></h6>
+    <p class="card-text"><%= hotel.about %></p>
+    
+    <% if logged_in? && current_user.isAdmin? %>
+
+    <p><b> (&nbsp<%= hotel.rooms.count %> Rooms avaliable &nbsp) </b></p>
+    <%= link_to "Edit Hotel", edit_hotel_path(hotel.id), class: "btn btn-primary" %>
+    <%= link_to "View Rooms", hotel_path(hotel), class:"btn btn-primary", style:"position: relative; left: 5rem" %>
+    <%= link_to "Add Rooms", new_hotel_room_path(hotel), class:"btn btn-primary", style:"position: relative; left: 10rem" %>
+    <%= link_to "Delete Hotel", hotel_path(hotel), :method => :delete, data:{confirm: "Are You Sure?" },class:"btn btn-danger",style:"position: relative; left: 15rem" %>
+
+    <% elsif %>
+
+    <%  hotel.rooms.count != 0%>
+    <p><b> (&nbsp<%= hotel.rooms.count %> Rooms avaliable &nbsp) </b></p>
+     <%= link_to "View Rooms", hotel_path(hotel), class:"btn btn-primary"%>
+
+    <% else %>
+    <p><b> (&nbsp No Rooms avaliable for booking &nbsp) </b></p>
+    <% end %>
+  </div>
+ 
+</div>
+  <% end %>

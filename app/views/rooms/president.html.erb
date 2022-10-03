@@ -1,0 +1,18 @@
+<div class= "container">
+<% @presidents.each do |pre| %>
+
+  <div class="card mr-2 mt-3" style="width: 50rem; position: relative; left: 10rem">
+        <% if pre.image.attached? %>
+            <img class="card-img-top" src=" <%= (url_for(pre.image)) %> " alt="Card image cap">
+        <% end %>
+  <div class="card-body">
+    <div class="card-body">
+            <h5 class="card-title"> <%= pre.hotel.name %> </h5>
+            <p class="card-text"><b>Room Type :</b><%= pre.room_type %> </p>
+            <%= link_to "Show Details", hotel_room_path(pre.hotel_id, pre.id), class: "btn btn-primary" %> 
+    </div>
+  
+  </div>
+</div>
+  <% end %>
+ </div> 

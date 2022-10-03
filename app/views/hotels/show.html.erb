@@ -1,0 +1,42 @@
+<div class="container mt-2">
+
+<h4 style="position: relative; left: 30rem; top: 2rem; margin-bottom: 2rem">Our Rooms </h4>
+
+
+<table class="table table-striped" style="position: relative;  top: 2rem">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col" style="position: relative; left: 4.5rem">Room Type</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @rooms.each do |room| %>
+  <tr>
+    
+    <td style="width: 17rem; position: relative right: 5rem">  <% if room.image.attached? %>
+                    <img class="card-img-top" src=" <%= (url_for(room.image)) %> " alt="Card image cap">
+                <% end %> </td>
+    <td style="position: relative; top:4rem;left: 4rem" ><b><%= room.room_type %></b></td>
+    <td style="position: relative; top:4rem" ><b><%= room.price %>/-</b></td>
+
+    <% if logged_in? && current_user.isAdmin? %>
+
+    <td style="position: relative; top:4rem; left: 5rem"><%= link_to 'Delete', hotel_room_path(@hotel, room.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+    <td style="position: relative; top:4rem"><%= link_to "Edit Room", edit_hotel_room_path(@hotel.id, room.id), class:"btn btn-primary" %></td>
+    
+    <% else %>
+    <td style="position: relative; top:4rem; right: 3rem"><%= link_to "Details", hotel_room_path(room.hotel_id, room.id), class: "btn btn-primary" %></td>
+    <% end %>
+  </tr>
+ <% end %>
+
+    </tr>
+</tbody>
+</table>
+</div>
+
+</div>
+</div>
+

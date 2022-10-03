@@ -1,0 +1,18 @@
+<div class= "container">
+<% @deluxes.each do |del| %>
+
+  <div class="card mr-2 mt-3" style="width: 50rem; position: relative; left: 10rem">
+        <% if del.image.attached? %>
+            <img class="card-img-top" src=" <%= (url_for(del.image)) %> " alt="Card image cap">
+        <% end %>
+  <div class="card-body">
+    <div class="card-body">
+            <h5 class="card-title"> <%= del.hotel.name %> </h5>
+            <p class="card-text"><b>Room Type :</b><%= del.room_type %> </p>
+            <%= link_to "Show Details", hotel_room_path(del.hotel_id, del.id), class: "btn btn-primary" %>
+            
+        </div>
+  </div>
+</div>
+  <% end %>
+ </div> 

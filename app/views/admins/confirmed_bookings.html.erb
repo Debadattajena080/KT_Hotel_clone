@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+        <h1>Confirmed Bookings</h1>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Booking ID</th>
+                <th>Customer Name</th>
+                <th>Customer email </th>
+                <th>Hotel Name</th>
+                <th>Room Type</th>
+                <th>Check In</th>
+                <th>Check Out</th>
+                <th>Adults</th>
+                <th>Children</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @bookings.each do |booking| %>
+                <tr>
+                <td><%= booking.id %></td>
+                <td><%= booking.user.username %></td>
+                <td><%= booking.user.email %></td>
+                <td><%= booking.room.hotel.name %></td>
+                <td><%= booking.room.room_type %></td>
+                <td><%= booking.start_date %></td>
+                <td><%= booking.end_date %></td>
+                <td><%= booking.adults %></td>
+                <td><%= booking.child %></td>
+                 
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+        </div>
+    </div>

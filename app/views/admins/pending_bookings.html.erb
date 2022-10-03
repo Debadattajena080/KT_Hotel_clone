@@ -1,0 +1,45 @@
+<% if @bookings.count == 0 %>
+<div class="container">
+    <h3 class="my-4 text-center">No new bookings pending for approval </h3>
+</div>
+
+<% else %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+        <h3 class="my-4 text-center">Pending Bookings</h3>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Hotel Name</th>
+                <th>Room Type</th>
+                <th>Check In</th>
+                <th>Check Out</th>
+                <th>Adults</th>
+                <th>Children</th>
+                <th>Booking Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @bookings.each do |booking| %>
+                <tr>
+                <td><%= booking.user.username %></td>
+                <td><%= booking.room.hotel.name %></td>
+                <td><%= booking.room.room_type %></td>
+                <td><%= booking.start_date %></td>
+                <td><%= booking.end_date %></td>
+                <td><%= booking.adults %></td>
+                <td><%= booking.child %></td>
+                <td>
+                <%= link_to "Accept", approve_booking_path(booking.id), class:"btn btn-success"%>
+                <%= link_to "Reject", reject_booking_path(booking.id), class:"btn btn-danger" %>
+                </td> 
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>
+<% end %>

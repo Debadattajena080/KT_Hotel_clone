@@ -1,0 +1,38 @@
+<div class="container border mt-4">
+<%= form_with(model: [@hotel,@room, @room.bookings.build]) do |f| %>
+
+<%= render 'shared/errors', obj: @booking %>
+<div class="date_picker"style="position: relative; left:6rem">
+
+    <div class="row my-4 ">
+        <div class="col-md-4">
+        <label>Check In</label>
+        <%= f.date_field :start_date  , placeholder:"Start Date", class: "form-control" %>
+        </div>
+        <div class="col-md-4">
+        <label>Check Out</label>
+        <%= f.date_field :end_date, placeholder: "End Date" , class: "form-control" %>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-md-4">
+        <label>Adults</label>
+        <%= f.number_field :adults, placeholder: "No. of Adults", class: "form-control" %>
+        </div>
+        <div class="col-md-4">
+        <label>Children</label>
+        <%= f.number_field :child, placeholder: "No. of Children", class: "form-control" %>
+        </div>
+    </div>
+    <div class="mb-3">
+        <small>Children below 5 years are free </small>
+    </div>
+    
+    <%= f.submit "Book Now", class: "btn btn-primary mb-4" %>
+
+</div>
+ 
+
+<% end %>
+</div>

@@ -1,0 +1,43 @@
+<div class="container d-flex justify-content-center mt-4">
+
+<div class="col-md-6 col-md-offset-3 border">
+<h1 class="d-flex justify-content-center mt-3">Create Account</h1>
+  <%= form_with model: @user, url: sign_up_path do |f| %>
+
+    <%= render "shared/errors", obj: @user %>
+
+    <p>
+    <%= f.label 'Username' %><br>
+    <%= f.text_field :username, class: 'form-control'%>
+    </p>
+
+    <p>
+    <%= f.label 'Contact' %><br>
+    <%= f.text_field :contact , class: 'form-control'%>
+    </p>
+
+    <p>
+    <%= f.label 'email' %><br>
+    <%= f.text_field :email, class: 'form-control' %>
+    </p>
+
+    <p>
+    <%= f.label 'password' %><br>
+    <%= f.password_field :password, class: 'form-control' %>
+    </p>
+
+    <p>
+    <%= f.label 'password_confirmation' %><br>
+    <%= f.password_field :password_digest, class: 'form-control' %>
+    </p>
+
+    <p>
+    <%= f.submit 'Sign Up', class: "btn btn-primary" %>
+    </p>
+    
+
+    
+  <% end %>
+  </div>
+  </div>
+  </div>

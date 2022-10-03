@@ -1,0 +1,99 @@
+
+<div class="nav-container">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div class="container d-flex justify-content-center">
+  <a class="navbar-brand" href="/">Hotel.com</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav">
+      
+
+  <% if !Current.user %>
+      <li class="nav-item ">
+        <a class="nav-link" href="sign_in">Log in</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="sign_up">Sign up</a>
+      </li>
+
+         <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Room Type
+            </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="/luxury" name="roomtype" >Luxury Suite</a>
+                <a class="dropdown-item" href="/deluxe">Deluxe Room</a>
+                <a class="dropdown-item" href="/president">President Suite</a>
+              </div>
+        
+        </li>
+         
+      <form class="my-2 my-lg-0 d-flex justify-content-end" action = "/search" style="position: relative; left: 25rem">
+            <input class="form-control mr-sm-2" name ="q" type="search" placeholder="Where to go..." aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form> 
+    
+    
+     <% elsif logged_in? && current_user.isAdmin? %> 
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= Current.user.email.split('@')[0].capitalize %> 
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+         
+          <a class="dropdown-item" href="/hotels/new">Create New Hotel</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" > <%= link_to 'Logout', logout_path, method: :delete, data: { "turbo-method": :delete},style: 'color: black; position: relative; left: 2.5rem; bottom: 0.5rem' %> 
+        </div>
+      </li>
+
+      <li class="nav-item dropdown" style="position: relative; left:2rem">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            All Bookings
+          </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/admins/pending_bookings">Pending for Approval</a>
+              <a class="dropdown-item" href="/admins/confirmed_bookings">Confirmed Bookings</a>
+            </div>
+      </li>
+
+
+      <% else %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <%= Current.user.username.split('@')[0].capitalize%> </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/bookings">My Reservations</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" > <%= link_to 'Logout', logout_path, method: :delete, data: { "turbo-method": :delete},style: 'color: black; position: relative; left: 2.5rem; bottom: 0.5rem' %> </a>
+        </div>
+        </li>
+
+        
+          <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Room Type
+        </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="/dropdown_luxury" name="roomtype" >Luxury Suite</a>
+                <a class="dropdown-item" href="/deluxe">Deluxe Room</a>
+                <a class="dropdown-item" href="/president">President Suite</a>
+              </div>
+        
+            </li>
+      
+         <form class="my-2 my-lg-0 d-flex justify-content-end" action = "/search" style="position: relative; left: 25rem">
+            <input class="form-control mr-sm-2" name ="q" type="search" placeholder="Where to go..." aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      
+
+      
+  <% end %>
+      
+    </ul>
+</nav>
+</div>
