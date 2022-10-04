@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class RoomsController < ApplicationController
-  before_action :must_be_admin, only: [:new, :create, :edit, :update, :destroy]
-  
+  before_action :must_be_admin, only: %i[new create edit update destroy]
+
   def index
     @hotel = Hotel.find(params[:hotel_id])
     @rooms = @hotel.find(params[:id])
@@ -69,7 +69,6 @@ class RoomsController < ApplicationController
   end
 
   private
-
 
   def room_params
     params.require(:room).permit(:room_type, :price, :image)
