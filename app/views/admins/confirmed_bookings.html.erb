@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-        <h1>Confirmed Bookings</h1>
+        <h3 class="my-4 text-center">Confirmed Bookings</h3>
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Booking ID</th>
-                <th>Customer Name</th>
-                <th>Customer email </th>
+               
+                <th>Name</th>
+                <th>email</th>
                 <th>Hotel Name</th>
                 <th>Room Type</th>
                 <th>Check In</th>
@@ -19,15 +19,14 @@
             <tbody>
             <% @bookings.each do |booking| %>
                 <tr>
-                <td><%= booking.id %></td>
                 <td><%= booking.user.username %></td>
                 <td><%= booking.user.email %></td>
                 <td><%= booking.room.hotel.name %></td>
                 <td><%= booking.room.room_type %></td>
                 <td><%= booking.start_date %></td>
                 <td><%= booking.end_date %></td>
-                <td><%= booking.adults %></td>
-                <td><%= booking.child %></td>
+                <td class="text-center"><%= booking.adults %></td>
+                <td class="text-center"><%= booking.child %></td>
                  
                 </tr>
             <% end %>

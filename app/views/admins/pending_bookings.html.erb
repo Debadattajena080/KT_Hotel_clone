@@ -29,8 +29,8 @@
                 <td><%= booking.room.room_type %></td>
                 <td><%= booking.start_date %></td>
                 <td><%= booking.end_date %></td>
-                <td><%= booking.adults %></td>
-                <td><%= booking.child %></td>
+                <td class="text-center"><%= booking.adults %></td>
+                <td class="text-center"><%= booking.child %></td>
                 <td>
                 <%= link_to "Accept", approve_booking_path(booking.id), class:"btn btn-success"%>
                 <%= link_to "Reject", reject_booking_path(booking.id), class:"btn btn-danger" %>

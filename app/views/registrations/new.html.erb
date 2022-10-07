@@ -1,11 +1,12 @@
+  
+
 <div class="container d-flex justify-content-center mt-4">
 
 <div class="col-md-6 col-md-offset-3 border">
+<%= render "shared/errors", obj: @user %>
 <h1 class="d-flex justify-content-center mt-3">Create Account</h1>
   <%= form_with model: @user, url: sign_up_path do |f| %>
-
-    <%= render "shared/errors", obj: @user %>
-
+  
     <p>
     <%= f.label 'Username' %><br>
     <%= f.text_field :username, class: 'form-control'%>
@@ -40,4 +41,4 @@
   <% end %>
   </div>
   </div>
-  </div>
+  
